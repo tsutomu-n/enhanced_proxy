@@ -8,13 +8,26 @@ from pydantic import BaseModel
 
 Protocol = Literal["http", "https", "socks4", "socks5"]
 PROXY_FORMATS_REGEXP = [
-    re.compile(r'^(?:(?P<protocol>https?|socks[45])://)?(?P<login>[^:]+):(?P<password>[^@|:]+)[@|:](?P<host>[^:]+):(?P<port>\d+)$'),
-    re.compile(r'^(?:(?P<protocol>https?|socks[45])://)?(?P<host>[^:]+):(?P<port>\d+)[@|:](?P<login>[^:]+):(?P<password>[^:]+)$'),
-    re.compile(r'^(?:(?P<protocol>https?|socks[45])://)?(?P<host>[^:]+):(?P<port>\d+)$'),
-    re.compile(r'^(?:(?P<protocol>https?|socks[45])://)?(?:\[(?P<host>[^]]+)\]):(?P<port>\d+)[@|:](?P<login>[^:]+):(?P<password>[^:]+)$'),
-    re.compile(r'^(?:(?P<protocol>https?|socks[45])://)?(?P<login>[^:]+):(?P<password>[^@|:]+)[@|:](?:\[(?P<host>[^]]+)\]):(?P<port>\d+)$'),
-    re.compile(r'^(?:(?P<protocol>https?|socks[45])://)?(?:\[(?P<host>[^]]+)\]):(?P<port>\d+)$'),
+    re.compile(
+        r"^(?:(?P<protocol>https?|socks[45])://)?(?P<login>[^:]+):(?P<password>[^@|:]+)[@|:](?P<host>[^:]+):(?P<port>\d+)$"
+    ),
+    re.compile(
+        r"^(?:(?P<protocol>https?|socks[45])://)?(?P<host>[^:]+):(?P<port>\d+)[@|:](?P<login>[^:]+):(?P<password>[^:]+)$"
+    ),
+    re.compile(
+        r"^(?:(?P<protocol>https?|socks[45])://)?(?P<host>[^:]+):(?P<port>\d+)$"
+    ),
+    re.compile(
+        r"^(?:(?P<protocol>https?|socks[45])://)?(?:\[(?P<host>[^]]+)\]):(?P<port>\d+)[@|:](?P<login>[^:]+):(?P<password>[^:]+)$"
+    ),
+    re.compile(
+        r"^(?:(?P<protocol>https?|socks[45])://)?(?P<login>[^:]+):(?P<password>[^@|:]+)[@|:](?:\[(?P<host>[^]]+)\]):(?P<port>\d+)$"
+    ),
+    re.compile(
+        r"^(?:(?P<protocol>https?|socks[45])://)?(?:\[(?P<host>[^]]+)\]):(?P<port>\d+)$"
+    ),
 ]
+
 
 def _load_lines(filepath: Path | str) -> List[str]:
     try:
@@ -30,7 +43,7 @@ class Proxy(BaseModel):
     host: str
     port: int
     protocol: Protocol
-    login:    str | None = None
+    login: str | None = None
     password: str | None = None
 
     @classmethod
@@ -51,7 +64,7 @@ class Proxy(BaseModel):
                     password=groups.get("password"),
                 )
 
-        raise ValueError(f'Unsupported proxy format: {proxy}')
+        raise ValueError(f"Unsupported proxy format: {proxy}")
 
     @classmethod
     def from_file(cls, filepath: Path | str) -> List["Proxy"]:
@@ -64,9 +77,11 @@ class Proxy(BaseModel):
             host = f"[{self.host}]" if ":" in self.host else self.host
         except ValueError:
             host = self.host
-        return (f"{self.protocol}://"
-                + (f"{self.login}:{self.password}@" if self.login and self.password else "")
-                + f"{host}:{self.port}")
+        return (
+            f"{self.protocol}://"
+            + (f"{self.login}:{self.password}@" if self.login and self.password else "")
+            + f"{host}:{self.port}"
+        )
 
     @property
     def server(self) -> str:

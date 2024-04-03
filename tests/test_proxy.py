@@ -1,5 +1,6 @@
 from enhanced_proxy import Proxy
 
+
 def test_from_str():
     proxy_str = "http://user:password@192.168.0.1:8080"
     proxy = Proxy.from_str(proxy_str)
