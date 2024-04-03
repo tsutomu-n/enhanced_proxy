@@ -128,7 +128,7 @@ If you have any questions, issues, or feedback regarding enhanced_proxy, please 
 
 ## License
 
-enhanced_proxy is released under the [MIT License](https://github.com/tsutomu-n/enhanced_proxy/blob/main/LICENSE).
+enhanced_proxy is released under the [MPL-2.0 (Mozilla Public License 2.0) ](https://opensource.org/license/mpl-2-0).
 
 ## Conclusion
 
