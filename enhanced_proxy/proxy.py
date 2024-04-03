@@ -1,7 +1,7 @@
 import ipaddress
 import re
 from pathlib import Path
-from typing import List, Literal
+from typing import List, Literal, Union
 
 from pydantic import BaseModel
 
@@ -34,7 +34,7 @@ class Proxy(BaseModel):
     password: str | None = None
 
     @classmethod
-    def from_str(cls, proxy: str or "Proxy") -> "Proxy":
+    def from_str(cls, proxy: Union[str, "Proxy"]) -> "Proxy":
         if type(proxy) is cls or issubclass(type(proxy), cls):
             return proxy
 
