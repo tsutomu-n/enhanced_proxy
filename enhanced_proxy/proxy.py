@@ -38,7 +38,6 @@ def _load_lines(filepath: Path | str) -> List[str]:
     except IOError as e:
         raise IOError(f"Error reading file: {filepath} - {str(e)}")
 
-
 class Proxy(BaseModel):
     host: str
     port: int
@@ -55,11 +54,11 @@ class Proxy(BaseModel):
             match = pattern.match(proxy)
             if match:
                 groups = match.groupdict()
-                protocol = groups.get("protocol")
+                protocol = groups.get("protocol", "http")  # Default to "http" if protocol is not specified
                 return cls(
                     host=groups["host"],
                     port=int(groups["port"]),
-                    protocol=protocol if protocol else "http",
+                    protocol=protocol,  # Directly assign the value of protocol
                     login=groups.get("login"),
                     password=groups.get("password"),
                 )
