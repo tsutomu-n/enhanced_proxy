@@ -32,21 +32,9 @@
    cd enhanced_proxy
    ```
 
-3. (オプション) 仮想環境を作成します:
+3. enhanced_proxyと依存関係をpoetryでインストールします:
    ```
-   python -m venv venv
-   source venv/bin/activate  # Unix/Linuxの場合
-   venv\Scripts\activate.bat  # Windowsの場合
-   ```
-
-4. 必要な依存関係をインストールします:
-   ```
-   pip install -r requirements.txt
-   ```
-
-5. enhanced_proxyをインストールします:
-   ```
-   python setup.py install
+   poetry install
    ```
 
 これらの手順に従うことで、enhanced_proxyがインストールされ、Pythonプロジェクトで使用できるようになります。
