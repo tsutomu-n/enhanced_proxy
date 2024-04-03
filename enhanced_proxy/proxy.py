@@ -34,8 +34,8 @@ class Proxy(BaseModel):
     password: str | None = None
 
     @classmethod
-    def from_str(cls, proxy: Union[str, "Proxy"]) -> "Proxy":
-        if type(proxy) is cls or issubclass(type(proxy), cls):
+    def from_str(cls, proxy: str) -> "Proxy":
+        if isinstance(proxy, cls):
             return proxy
 
         for pattern in PROXY_FORMATS_REGEXP:
