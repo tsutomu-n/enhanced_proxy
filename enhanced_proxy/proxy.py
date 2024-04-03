@@ -42,10 +42,11 @@ class Proxy(BaseModel):
             match = pattern.match(proxy)
             if match:
                 groups = match.groupdict()
+                protocol = groups.get("protocol")
                 return cls(
                     host=groups["host"],
                     port=int(groups["port"]),
-                    protocol=Protocol(groups.get("protocol", "http")),
+                    protocol=protocol if protocol else "http",
                     login=groups.get("login"),
                     password=groups.get("password"),
                 )
