@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "enhanced-proxy"
+version = "1.0.0"
+description = "A powerful and flexible proxy management library for Python. Supports both IPv4 and IPv6, and handles various proxy string formats. Compatible with async HTTP client libraries such as aiohttp and aiohttp_socks."
+authors = ["Tsutomu <your.email@example.com>"]
+readme = ["README.md", "README.ja.md"]
+repository = "https://github.com/tsutomu-n/enhanced_proxy"
+packages = [{include = "enhanced_proxy"}]
+license = "MIT"
+
+[tool.poetry.urls]
+"Source" = "https://github.com/tsutomu-n/enhanced_proxy"
+"Bug Tracker" = "https://github.com/tsutomu-n/enhanced_proxy/issues"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pydantic = "^1.10.7"
+aiohttp = "^3.8.4"
+aiohttp-socks = "^0.7.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.3.1"
+pytest-asyncio = "^0.21.0"
+black = "^23.3.0"
+mypy = "^1.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
