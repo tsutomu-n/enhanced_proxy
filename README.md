@@ -24,7 +24,13 @@ A proxy is a server that acts on behalf of another computer on the internet. Pro
 
 ## Installation
 
-To install enhanced_proxy from the source code, follow these steps:
+To install enhanced_proxy, you can use pip:
+
+```
+pip install enhanced-proxy
+```
+
+Alternatively, you can install it using poetry:
 
 1. Clone the repository:
    ```
@@ -36,29 +42,20 @@ To install enhanced_proxy from the source code, follow these steps:
    cd enhanced_proxy
    ```
 
-3. (Optional) Create a virtual environment:
+3. Install the package and its dependencies using poetry:
    ```
-   python -m venv venv
-   source venv/bin/activate  # For Unix/Linux
-   venv\Scripts\activate.bat  # For Windows
+   poetry install
    ```
 
-4. Install the required dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
+## Running Tests and Quality Checks
 
-   The required dependencies are:
-   - `pydantic`
-   - `aiohttp`
-   - `aiohttp-socks`
+To run tests and quality checks, you can use tox:
 
-5. Install enhanced_proxy:
-   ```
-   python setup.py install
-   ```
+```
+tox
+```
 
-After following these steps, enhanced_proxy will be installed and ready to use in your Python projects.
+This will run the tests using pytest, perform type checking using mypy, and check code formatting using black.
 
 ## Examples of Proxy Strings
 
@@ -127,7 +124,7 @@ If you would like to contribute code, please fork the repository and create a pu
 
 ## Support and Feedback
 
-If you have any questions, issues, or feedback regarding enhanced_proxy, please open an issue on the GitHub repository or contact the maintainers at [email address].
+If you have any questions, issues, or feedback regarding enhanced_proxy, please open an issue on the GitHub repository or contact the maintainers at [t_n@seimou.net].
 
 ## License
 
