@@ -1,0 +1,16 @@
+[31m/home/tn/04projects/enhanced_proxy/.tox/python3.8/lib/python3.11/site-packages/coverage/control.py:887: CoverageWarning: No data was collected. (no-data-collected)
+  self._warn("No data was collected.", slug="no-data-collected")
+[39m[31m/home/tn/04projects/enhanced_proxy/.tox/python3.9/lib/python3.11/site-packages/coverage/control.py:887: CoverageWarning: No data was collected. (no-data-collected)
+  self._warn("No data was collected.", slug="no-data-collected")
+[39m[31m/home/tn/04projects/enhanced_proxy/.tox/python3.10/lib/python3.11/site-packages/coverage/control.py:887: CoverageWarning: No data was collected. (no-data-collected)
+  self._warn("No data was collected.", slug="no-data-collected")
+[39m[31m/home/tn/04projects/enhanced_proxy/.tox/python3.11/lib/python3.11/site-packages/coverage/control.py:887: CoverageWarning: No data was collected. (no-data-collected)
+  self._warn("No data was collected.", slug="no-data-collected")
+[39m[31m/home/tn/04projects/enhanced_proxy/.tox/python3.12/lib/python3.11/site-packages/coverage/control.py:887: CoverageWarning: No data was collected. (no-data-collected)
+  self._warn("No data was collected.", slug="no-data-collected")
+[39m[31m[main]	INFO	profile include tests: None
+[39m[31m[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.11.4
+[39m
