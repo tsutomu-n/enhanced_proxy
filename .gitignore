@@ -124,3 +124,81 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Editor directories and files
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Linux
+*~
+
+# Temporary files
+tmp/
+*.tmp
+*.bak
+*.swp
+
+# Logs
+logs/
+*.log
+
+# Test outputs
+output/
+test-reports/
+
+# Compiled binaries
+*.so
+*.dll
+
+# Local environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Miscellaneous
+.idea/
+.venv/
+.pytest_cache/
