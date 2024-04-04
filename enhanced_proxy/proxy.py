@@ -1,7 +1,7 @@
 import ipaddress
 import re
 from pathlib import Path
-from typing import List, Literal, Union
+from typing import cast, Literal
 
 from pydantic import BaseModel
 
@@ -38,35 +38,33 @@ def _load_lines(filepath: Path | str) -> List[str]:
     except IOError as e:
         raise IOError(f"Error reading file: {filepath} - {str(e)}")
 
+Protocol = Literal["http", "https", "socks4", "socks5"]
 
 class Proxy(BaseModel):
     host: str
     port: int
-    protocol: Protocol
+    protocol: str
     login: str | None = None
     password: str | None = None
 
     @classmethod
-    def from_str(cls, proxy: str) -> "Proxy":
-        if isinstance(proxy, cls):
-            return proxy
-
+    def from_str(cls, proxy_str: str) -> "Proxy":
         for pattern in PROXY_FORMATS_REGEXP:
-            match = pattern.match(proxy)
+            match = pattern.match(proxy_str)
             if match:
                 groups = match.groupdict()
-                protocol = groups.get(
-                    "protocol", "http"
-                )  # Default to "http" if protocol is not specified
+                protocol = groups.get("protocol", "http")
+                if protocol not in ["http", "https", "socks4", "socks5"]:
+                    raise ValueError(f"Invalid protocol: {protocol}")
+                protocol = cast(Protocol, protocol)
                 return cls(
                     host=groups["host"],
                     port=int(groups["port"]),
-                    protocol=protocol,  # Directly assign the value of protocol
+                    protocol=protocol,
                     login=groups.get("login"),
                     password=groups.get("password"),
                 )
-
-        raise ValueError(f"Unsupported proxy format: {proxy}")
+        raise ValueError(f"Unsupported proxy format: {proxy_str}")
 
     @classmethod
     def from_file(cls, filepath: Path | str) -> List["Proxy"]:
